@@ -79,19 +79,43 @@ if ((verOffset=navigator.userAgent.indexOf("Chrome"))!=-1) {
     background-color: lime;
 }
 
+.response {
+    text-align: center;
+}
+
+.response p {
+    font-size: xx-large;
+}
+
+body {
+    text-align: center;
+}
+
+.info {
+    background-color: white;
+}}
 
 </style>
 
 
 
 
-<body>
+<script>
+    if(resolution_pass && os_pass && browser_pass) {
+        document.write('<body class="pass">')
+    } else {
+        document.write('<body class="fail">')
+    }
 
-<section>
+</script>
+
+<section class="info">
     If any of the following sections are <b class="fail">red</b> your device does not meet the requirements.
     <br>
     If the sections are all <b class="pass">green</b>, your device is suitable for NZQA Digital Exams.
 </section>
+
+<br>
 
 <script>
     if(resolution_pass) {   
@@ -118,6 +142,17 @@ if ((verOffset=navigator.userAgent.indexOf("Chrome"))!=-1) {
         document.write('<section id="browser" class="fail">Browser: ' + browserName + ' ' + majorVersion + '</section>');
     }
 </script>
+
+<section class="response">
+<script>
+    if(resolution_pass && os_pass && browser_pass) {
+        document.write('<p>Device Suitable</p>')
+    } else {
+        document.write('<p>Device Fail</p><br>Please see the IT Technicians">')
+    }
+
+</script>
+
 
 </section>
 
