@@ -1,0 +1,35 @@
+html, body {
+    background-color: green;
+}
+.container {
+    margin: auto;
+    max-width: 500px;
+    background-color: white;
+
+}
+
+.heading {
+    width: 100%;
+    background-color: red;
+    font-size: 3em;
+}
+
+.main {
+    width: 100%;
+
+    background-color: aqua;
+    display: flex;
+}
+nav {
+    max-width: 125px;
+    min-width: 125px;
+    height:100%;
+    background-color: bisque;
+}
+.content {
+    width: 100%;
+
+}
+ul {
+    margin-top: 0px;
+}

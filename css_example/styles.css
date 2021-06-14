@@ -1,0 +1,30 @@
+body {
+    background-color: yellow;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 5em;
+    font-family: "Times New Roman";
+    font-style: italic;
+    background-color: brown;
+    color: #00fff0;
+}
+
+button {
+    color: silver;
+    background-color: red;
+    width: 200px;
+    height:200px;
+    border-radius: 50px;
+}
+
+.custom_image {
+    max-width: 400px;
+    max-height: 500px;
+}
+
+.custom_image img {
+    max-height: 50%;
+    max-width: 50%;
+}

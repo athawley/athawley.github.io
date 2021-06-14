@@ -1,0 +1,125 @@
+<html>
+<script>
+// JavaScript NZQA Digital Exam Settings
+var chrome_min = 85;
+var safari_min = 11;
+
+var resolution_width_min = 1366;
+var resolution_height_min = 768;
+
+var windows_os = 8.1;
+var windows_10_os = 10;
+var mac_os = 10.14;
+
+var browser_pass = false;
+var resolution_pass = false;
+var os_pass = false;
+
+if(screen.width >= resolution_width_min && screen.height >= resolution_height_min) {
+    resolution_pass = true;
+}
+
+var os_name="Unknown OS";
+function operatingSystem() { 
+    var OSName = "Unknown OS"
+    if (navigator.userAgent.indexOf("Windows NT 10.0")!= -1) OSName="Windows 10";
+    if (navigator.userAgent.indexOf("Windows NT 6.2") != -1) OSName="Windows 8";
+    if (navigator.userAgent.indexOf("Windows NT 6.1") != -1) OSName="Windows 7";
+
+    if (navigator.userAgent.indexOf("Mac") != -1) OSName="Mac/iOS";
+    if (navigator.userAgent.indexOf("X11") != -1) OSName="UNIX";
+    if (navigator.userAgent.indexOf("Linux") != -1) OSName="Linux";
+    return OSName;
+}
+os_name = operatingSystem();
+if(os_name == "Windows 10" || os_name == "Windows 8" || os_name == "Mac/iOS") {
+    os_pass = true;
+}
+
+var browserName  = navigator.appName;
+  var fullVersion  = ''+parseFloat(navigator.appVersion);
+  var majorVersion = parseInt(navigator.appVersion,10);
+  var nameOffset,verOffset,ix;
+
+if ((verOffset=navigator.userAgent.indexOf("Chrome"))!=-1) {
+   browserName = "Chrome";
+   fullVersion = navigator.userAgent.substring(verOffset+7);
+  }
+  // In Safari, the true version is after "Safari" or after "Version"
+  else if ((verOffset=navigator.userAgent.indexOf("Safari"))!=-1) {
+   browserName = "Safari";
+   fullVersion = navigator.userAgent.substring(verOffset+7);
+   if ((verOffset=navigator.userAgent.indexOf("Version"))!=-1)
+     fullVersion = navigator.userAgent.substring(verOffset+8);
+  }
+
+  // trim the fullVersion string at semicolon/space if present
+  if ((ix=fullVersion.indexOf(";"))!=-1)
+     fullVersion=fullVersion.substring(0,ix);
+  if ((ix=fullVersion.indexOf(" "))!=-1)
+     fullVersion=fullVersion.substring(0,ix);
+  
+  majorVersion = parseInt(''+fullVersion,10);
+  if (isNaN(majorVersion)) {
+   fullVersion  = ''+parseFloat(navigator.appVersion);
+   majorVersion = parseInt(navigator.appVersion,10);
+  }
+
+  if((browserName == "Chrome" && majorVersion >= chrome_min) || browserName == "Safari" && majorVersion >= safari_min) {
+      browser_pass = true;
+  }
+
+</script>
+<style>
+
+.fail {
+    background-color: red;
+}
+.pass {
+    background-color: lime;
+}
+
+
+</style>
+
+
+
+
+<body>
+
+<section>
+    If any of the following sections are <b class="fail">red</b> your device does not meet the requirements.
+    <br>
+    If the sections are all <b class="pass">green</b>, your device is suitable for NZQA Digital Exams.
+</section>
+
+<script>
+    if(resolution_pass) {   
+        document.write('<section id="resolution" class="pass">Screen Resolution: ' + screen.width + ' x ' + screen.height + '</section>');
+    } else {
+        document.write('<section id="resolution" class="fail">Screen Resolution: ' + screen.width + ' x ' + screen.height + '</section>');
+    }
+</script>
+
+<!--  Operating System-->
+<script>
+    if(os_pass) {   
+        document.write('<section id="os" class="pass">Operating System: ' + os_name + '</section>');
+    } else {
+        document.write('<section id="os" class="fail">Operating System: ' + os_name + '</section>');
+    }
+</script>
+
+<!--  Operating System-->
+<script>
+    if(browser_pass) {   
+        document.write('<section id="browser" class="pass">Browser: ' + browserName + ' ' + majorVersion + '</section>');
+    } else {
+        document.write('<section id="browser" class="fail">Browser: ' + browserName + ' ' + majorVersion + '</section>');
+    }
+</script>
+
+</section>
+
+</body>
+</html>
