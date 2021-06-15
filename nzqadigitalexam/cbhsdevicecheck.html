@@ -78,6 +78,9 @@ if ((verOffset=navigator.userAgent.indexOf("Chrome"))!=-1) {
 .pass {
     background-color: lime;
 }
+.warning {
+    background-color: yellow;
+}
 
 .response {
     text-align: center;
@@ -104,7 +107,7 @@ body {
     if(resolution_pass && os_pass && browser_pass) {
         document.write('<body class="pass">')
     } else {
-        document.write('<body class="fail">')
+        document.write('<body class="warning">')
     }
 
 </script>
@@ -145,10 +148,18 @@ body {
 
 <section class="response">
 <script>
-    if(resolution_pass && os_pass && browser_pass) {
-        document.write('<p>Device Suitable</p>')
+    if(resolution_pass && os_pass && browser_pass) {        
+        
+        if(os_name == "Mac/iOS") {
+            document.write('<p>Device Should be ok</p>')
+            document.write('<br><p class="fail">Please check your macOS version is greater than 10.14</a>')
+        } else {
+            document.write('<p>Device Suitable</p>')
+        }
     } else {
-        document.write('<p>Device Fail</p><br>Please see the IT Technicians">')
+        document.write('<p>Device Fail</p><br>Please see the IT Technicians<br>');
+        document.write('This might be due to Windows having font scaling set.<br>');
+        document.write('<a href="https://support.microsoft.com/en-us/windows/change-the-size-of-text-in-windows-10-1d5830c3-eee3-8eaa-836b-abcc37d99b9a#:~:text=To%20change%20your%20display%20in,menu%20under%20Make%20everything%20bigger.">Click here to see how you scale your fonts</a>')
     }
 
 </script>
