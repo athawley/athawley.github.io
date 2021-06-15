@@ -14,6 +14,7 @@ var mac_os = 10.14;
 var browser_pass = false;
 var resolution_pass = false;
 var os_pass = false;
+var os_windows = false;
 
 if(screen.width >= resolution_width_min && screen.height >= resolution_height_min) {
     resolution_pass = true;
@@ -34,6 +35,9 @@ function operatingSystem() {
 os_name = operatingSystem();
 if(os_name == "Windows 10" || os_name == "Windows 8" || os_name == "Mac/iOS") {
     os_pass = true;
+    if(os_name == "Windows 10" || os_name == "Windows 8") {
+        os_windows = true;
+    }
 }
 
 var browserName  = navigator.appName;
@@ -115,7 +119,9 @@ body {
 <section class="info">
     If any of the following sections are <b class="fail">red</b> your device does not meet the requirements.
     <br>
-    If the sections are all <b class="pass">green</b>, your device is suitable for NZQA Digital Exams.
+    If any of the following sections are <b class="warning">yellow</b> your device might need closer inspection.
+    <br>
+    If all of the sections are <b class="pass">green</b>, your device is suitable for NZQA Digital Exams.
 </section>
 
 <br>
@@ -124,7 +130,11 @@ body {
     if(resolution_pass) {   
         document.write('<section id="resolution" class="pass">Screen Resolution: ' + screen.width + ' x ' + screen.height + '</section>');
     } else {
-        document.write('<section id="resolution" class="fail">Screen Resolution: ' + screen.width + ' x ' + screen.height + '</section>');
+        if(os_windows) {
+            document.write('<section id="resolution" class="fail">Screen Resolution: ' + screen.width + ' x ' + screen.height + '</section>');
+        } else {
+            document.write('<section id="resolution" class="fail">Screen Resolution: ' + screen.width + ' x ' + screen.height + '</section>');
+        }
     }
 </script>
 
