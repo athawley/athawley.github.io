@@ -173,14 +173,14 @@ body {
     if(resolution_pass && os_pass && browser_pass) {        
         
         if(os_name == "Mac/iOS") {
-            document.write('<p>Device Should be ok</p>');
+            document.write('<p>?</p>');
             document.write('<br><p class="warning">Please check your macOS version is greater than 10.14</p>');
             document.write('<a href="https://support.apple.com/en-gb/HT201260#:~:text=From%20the%20Apple%20menu%20%EF%A3%BF,version%20number%20to%20see%20it.">Click here to check your masOS version</a>');
         } else {
-            document.write('<p class="suitable">Device Suitable</p>')
+            document.write('<p class="suitable">Pass</p>')
         }
     } else {
-        document.write('<p>Device Fail</p><br>Please see the IT Technicians<br>');
+        document.write('<p>?</p><br>Please see the IT Technicians<br>');
         document.write('This might be due to Windows having font scaling set.<br>');
         document.write('<a href="https://support.microsoft.com/en-us/windows/change-the-size-of-text-in-windows-10-1d5830c3-eee3-8eaa-836b-abcc37d99b9a#:~:text=To%20change%20your%20display%20in,menu%20under%20Make%20everything%20bigger.">Click here to see how you scale your fonts</a>')
     }
