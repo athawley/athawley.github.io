@@ -1,7 +1,7 @@
 <html>
     <style>
         body {
-            font-size:  24pt;
+            font-size:  16pt;
             font-family: sans-serif;
         }
 
@@ -129,7 +129,7 @@ body {
 <p>
     If the background is <b class="fail">red</b> your device does not meet the requirements.
 </p>
-    If the background is <b class="warning">yellow</b> your device might need closer inspection, please see the IT Department.
+    If the background is <b class="warning">yellow</b> your device might need closer inspection, run the practice exam <a href="https://am.nzqa.sonet.com.au/engine/index.php/lms/login/path/generic20/oToken/d63201b19985732554e2a57a709d1dbb69f22e9f">here</a>.<br> If you're still unsure, please see the IT Department.
 </p>
 <p>
     If the background is <b class="pass">green</b>, your device is suitable for NZQA Digital Exams.
@@ -180,8 +180,13 @@ body {
             document.write('<p class="suitable">Pass</p>')
         }
     } else {
-        document.write('<p>?</p><br>Please see the IT Technicians<br>');
-        document.write('This might be due to Windows having font scaling set.<br>');
+        document.write('<p>?</p>Your device might be ok, please run the practice test at the link below.<br>');
+
+        document.write('<a href="https://am.nzqa.sonet.com.au/engine/index.php/lms/login/path/generic20/oToken/d63201b19985732554e2a57a709d1dbb69f22e9f">Click here to practice the using the NZQA Digital Exam system</a><br>');
+
+        document.write('<br>If you are still unsure with your device is suitable please see the IT Technicians<br>');
+        document.write('<br>This might be due to Windows having font scaling set.<br>');
+        
         document.write('<a href="https://support.microsoft.com/en-us/windows/change-the-size-of-text-in-windows-10-1d5830c3-eee3-8eaa-836b-abcc37d99b9a#:~:text=To%20change%20your%20display%20in,menu%20under%20Make%20everything%20bigger.">Click here to see how you scale your fonts</a>')
     }
 
