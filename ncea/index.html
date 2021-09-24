@@ -5,6 +5,9 @@
             font-family: sans-serif;
         }
 
+        .highlight {
+            font-size: 24pt;
+        }
 
     </style>
 <script>
@@ -151,6 +154,11 @@ body {
 <script>
     if(os_pass) {   
         document.write('<section id="os" class="item pass">Operating System: ' + os_name + ' - Pass</section>');
+        if(os_name == "Mac/iOS") {
+            document.write('<p>?</p>');
+            document.write('<br><p>Please check your macOS version is greater than 10.14</p>');
+            document.write('<p><a href="https://support.apple.com/en-gb/HT201260#:~:text=From%20the%20Apple%20menu%20%EF%A3%BF,version%20number%20to%20see%20it.">Click here to check your masOS version</a></p>');
+        }
     } else {
         document.write('<section id="os" class="item fail">Operating System: ' + os_name + ' - Fail</section>');
     }
@@ -167,26 +175,33 @@ body {
 
 <script>
     if(resolution_pass) {   
-        document.write('<section id="resolution" class="item pass">Screen Resolution: ' + screen.width + ' x ' + screen.height + '  - Pass<br>');
+        //document.write('<section id="resolution" class="item pass">Screen Resolution: ' + screen.width + ' x ' + screen.height + '  - Pass<br>');
     } else {
-        if(os_windows) {
-            document.write('<section id="resolution" class="item warning">Screen Resolution: ' + screen.width + ' x ' + screen.height + ' - Please check by running the <a href="https://am.nzqa.sonet.com.au/engine/index.php/lms/login/path/generic20/oToken/d63201b19985732554e2a57a709d1dbb69f22e9f">NCEA digital practice exam</a><br>');
-        } else {
-            document.write('<section id="resolution" class="item warning">Screen Resolution: ' + screen.width + ' x ' + screen.height + ' - Please check by running the <a href="https://am.nzqa.sonet.com.au/engine/index.php/lms/login/path/generic20/oToken/d63201b19985732554e2a57a709d1dbb69f22e9f">NCEA digital practice exam</a><br>');
-        }
-        document.write('<p>Your device might need closer inspection, run the NCEA Digital practice exam <a href="https://am.nzqa.sonet.com.au/engine/index.php/lms/login/path/generic20/oToken/d63201b19985732554e2a57a709d1dbb69f22e9f">here</a>.');
-        document.write('<br> <b>If the exam works fine you should be good for the digital exams.</b>');
         
-        document.write('<br>The warning might be due to Windows having font scaling set to 150%.<br>');
+        document.write('<section id="resolution" class="item warning">Screen Resolution: ' + screen.width + ' x ' + screen.height + ' - Your resolution might too low. <p>Please check the <a href="https://am.nzqa.sonet.com.au/engine/index.php/lms/login/path/generic20/oToken/d63201b19985732554e2a57a709d1dbb69f22e9f">NCEA digital practice exam</a> runs without a problem.</p>');
+        
+        document.write('<p> <b>If the exam works fine you should be good for the digital exams.</b><p>');
+        
+        document.write('The warning might be due to Windows having font scaling set to 150%.<br>');
         document.write('<a href="https://support.microsoft.com/en-us/windows/change-the-size-of-text-in-windows-10-1d5830c3-eee3-8eaa-836b-abcc37d99b9a#:~:text=To%20change%20your%20display%20in,menu%20under%20Make%20everything%20bigger.">Click here to see how to scale your fonts on Windows</a>')
         document.write('<br>If you\'re still unsure, please see the IT Department.</p></section>');
 
     }
 </script>
 
+<section>
+    <p>Everyone should run the NZQA NCEA Digital Exam Practice to ensure that it works for you.<br>
+        You should be able to see 
+        <br>
+        <a class="highlight" href="https://am.nzqa.sonet.com.au/engine/index.php/lms/login/path/generic20/oToken/d63201b19985732554e2a57a709d1dbb69f22e9f">Click here to run the practice exam.</a>
+        </p>
+    <p>If you encounter any difficulties see the IT Department or Mr Thawley in F10.</p>
+
+</section>
+
 <section class="response">
 <script>
-    if(resolution_pass && os_pass && browser_pass) {        
+ /*   if(resolution_pass && os_pass && browser_pass) {        
         
         if(os_name == "Mac/iOS") {
             document.write('<p>?</p>');
