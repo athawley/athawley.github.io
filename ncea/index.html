@@ -147,6 +147,24 @@ body {
 
 <br>
 
+<!--  Operating System-->
+<script>
+    if(os_pass) {   
+        document.write('<section id="os" class="item pass">Operating System: ' + os_name + ' - Pass</section>');
+    } else {
+        document.write('<section id="os" class="item fail">Operating System: ' + os_name + ' - Fail</section>');
+    }
+</script>
+
+<!--  Operating System-->
+<script>
+    if(browser_pass) {   
+        document.write('<section id="browser" class="item pass">Browser: ' + browserName + ' ' + majorVersion + ' - Pass</section>');
+    } else {
+        document.write('<section id="browser" class="item fail">Browser: ' + browserName + ' ' + majorVersion + ' - Fail, try using Chrome or Safari</section>');
+    }
+</script>
+
 <script>
     if(resolution_pass) {   
         document.write('<section id="resolution" class="item pass">Screen Resolution: ' + screen.width + ' x ' + screen.height + '  - Pass<br>');
@@ -163,24 +181,6 @@ body {
         document.write('<a href="https://support.microsoft.com/en-us/windows/change-the-size-of-text-in-windows-10-1d5830c3-eee3-8eaa-836b-abcc37d99b9a#:~:text=To%20change%20your%20display%20in,menu%20under%20Make%20everything%20bigger.">Click here to see how you scale your fonts</a>')
         document.write('<br>If you\'re still unsure, please see the IT Department.</p></section>');
 
-    }
-</script>
-
-<!--  Operating System-->
-<script>
-    if(os_pass) {   
-        document.write('<section id="os" class="item pass">Operating System: ' + os_name + ' - Pass</section>');
-    } else {
-        document.write('<section id="os" class="item fail">Operating System: ' + os_name + ' - Fail</section>');
-    }
-</script>
-
-<!--  Operating System-->
-<script>
-    if(browser_pass) {   
-        document.write('<section id="browser" class="item pass">Browser: ' + browserName + ' ' + majorVersion + ' - Pass</section>');
-    } else {
-        document.write('<section id="browser" class="item fail">Browser: ' + browserName + ' ' + majorVersion + ' - Fail, try using Chrome or Safari</section>');
     }
 </script>
 
