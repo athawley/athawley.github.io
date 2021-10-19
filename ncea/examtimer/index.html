@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Exam Clock</title>
+
+<script>
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('clock').innerHTML =  h + ":" + m;
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+
+function startExam() {
+   
+   let startTime = document.getElementById('start').value;
+   let examLength = document.getElementById('length').value;
+   alert("Exam started" + startTime + " - " + examLength);
+
+   let examTimesContent = "";
+
+   document.getElementById('examtimes').innerHTML = 
+   
+}
+</script>
+
+<style>
+   .clock {
+      font-size: 15em;
+      text-align: center;
+      width: 80%;
+      float: left;
+   }
+   .examtimes {
+      width: 20%;
+      text-align: center;
+      float: left;
+      background-color: silver;
+   }
+</style>
+
+</head>
+<body onload="startTime()">
+
+   <section class="examdetails">
+      <h3></h3>
+      <h1>NCEA Digital Technology</h1>
+      <h2>91899 - Present a Summary of Developing a Digital Outcome</h2>
+   </section>
+
+   <div>
+      <section id="clock" class="clock">
+         
+      </section>
+
+      <section class="examtimes">
+         <label for="appt">Start:</label>
+         <input type="time" id="start" name="start" min="09:00" max="18:00" required>
+         <br>
+         <label for="appt">Length (Hours):</label>
+         <input type="number" id="length" name="length" min="0" max="6" required>
+         <button onclick="startExam()">Start</button>
+      </section>
+   </div>
+
+</body>
+</html>
