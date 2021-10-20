@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Exam Clock</title>
+
+<script>
+let start = new Date();
+let end = null;
+
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('clock').innerHTML =  h + ":" + m;
+  let elapsed = today.getTime() - start.getTime() // elapsed time in milliseconds
+  elapsedHours = Math.round(elapsed / 1000 / 60 / 60);
+  elapsedMinutes = Math.round(elapsed / 1000 / 60);
+  elapsedSeconds = Math.round(elapsed / 1000);
+  //document.getElementById('elapsed').innerHTML =  elapsedHours + ":" + elapsedMinutes + ":" + elapsedSeconds;
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+
+function startExam() {
+   
+   let startTime = document.getElementById('start').value;
+   let examLength = document.getElementById('length').value;
+   alert("Exam started" + startTime + " - " + examLength);
+
+   let examTimesContent = "";
+   let step = 15;
+   let numSteps = examLength * 60 / step;
+   document.getElementById("examtimes").innerHTML = "Start: " + startTime + "<br>" + "End:" + (startTime.getHours() + numSteps * step / 60);
+   
+}
+
+// Using built-in methods
+//let start = new Date()
+
+// The event to time goes here:
+//doSomethingForALongTime()
+//let end = new Date()
+//let elapsed = end.getTime() - start.getTime() // elapsed time in milliseconds
+
+</script>
+
+<style>
+   body {
+      text-align: center;
+   }
+   .clock {
+      font-size: 15em;
+      text-align: center;
+      width: 100%;
+      
+   }
+   .examtimes {
+      width: 20%;
+      text-align: center;
+      float: left;
+      background-color: silver;
+   }
+</style>
+
+</head>
+<body onload="startTime()">
+
+   <section class="examdetails">
+      <h3><script>
+         let d = new Date();
+         document.write(d.toString());
+      </script></h3>
+      <h1>NCEA Digital Technology</h1>
+      <h2>91899 - Present a Summary of Developing a Digital Outcome</h2>
+   </section>
+
+   
+
+   <div>
+      <h1>1:31pm - 4:31pm</h1>
+      <section id="clock" class="clock">
+         
+      </section>   
+      
+
+      <h2>
+         At the end of the exam save as a pdf in the format below</h2>
+         <h1>NSN-Surname-Forename.pdf</h1>
+<h2>Do not leave the exam room until your supervisor has checked your work is saved correctly</h2>
+   </div>
+
+</body>
+</html>

@@ -4,6 +4,10 @@
    <title>Exam Clock</title>
 
 <script>
+let start = new Date();
+let end = null;
+let examTimeHours = 3;
+
 function startTime() {
   const today = new Date();
   let h = today.getHours();
@@ -12,6 +16,32 @@ function startTime() {
   m = checkTime(m);
   s = checkTime(s);
   document.getElementById('clock').innerHTML =  h + ":" + m;
+  let elapsed = today.getTime() - start.getTime() // elapsed time in milliseconds
+  elapsedHours = Math.trunc(elapsed / 1000 / 60 / 60);
+  elapsedMinutes = Math.trunc((elapsed / 1000 / 60) % 60);
+  elapsedSeconds = Math.trunc((elapsed / 1000) % 60);
+  elapsedMinutes = checkTime(elapsedMinutes);
+  elapsedSeconds = checkTime(elapsedSeconds);
+  document.getElementById('elapsed').innerHTML =  "Elapsed Time: " + elapsedHours + ":" + elapsedMinutes + ":" + elapsedSeconds;
+
+  let remaining = start.getTime() + examTimeHours * 60 * 60 * 1000 + 1 - today.getTime() // remaining time in milliseconds
+  remainingHours = Math.trunc((remaining) / 1000 / 60 / 60);
+  remainingMinutes = Math.trunc(((remaining) - remainingHours * 1000 * 60 * 60 ) / 1000 / 60);
+  remainingSeconds = Math.trunc(((remaining) - (remainingHours*1000*60*60 + remainingMinutes * 1000 * 60)) / 1000);
+  remainingMinutes = checkTime(remainingMinutes);
+  remainingSeconds = checkTime(remainingSeconds);
+  document.getElementById('remaining').innerHTML =  "Time Remaining: " + remainingHours + ":" + remainingMinutes + ":" + remainingSeconds;
+
+  let elapsedWidth = elapsed / (examTimeHours *60*60*1000);
+  let remainingWidth = ((examTimeHours *60*60*1000) - elapsed) / (examTimeHours *60*60*1000);
+  //document.getElementById('elapsed').style += "width:" + elapsedWidth;
+  let tmpStyle = "width:" + (elapsedWidth*100) + "%; background-color:red; float:left;";
+  //alert(elapsedWidth);
+  document.getElementById('elapsedBar').style = tmpStyle;
+
+  tmpStyle = "width:" + (remainingWidth*100) + "%; background-color:#00ff00; float:left;";
+  document.getElementById('remainingBar').style = tmpStyle;
+
   setTimeout(startTime, 1000);
 }
 
@@ -27,24 +57,54 @@ function startExam() {
    alert("Exam started" + startTime + " - " + examLength);
 
    let examTimesContent = "";
-
-   document.getElementById('examtimes').innerHTML = 
+   let step = 15;
+   let numSteps = examLength * 60 / step;
+   document.getElementById("examtimes").innerHTML = "Start: " + startTime + "<br>" + "End:" + (startTime.getHours() + numSteps * step / 60);
    
 }
+
+// Using built-in methods
+//let start = new Date()
+
+// The event to time goes here:
+//doSomethingForALongTime()
+//let end = new Date()
+//let elapsed = end.getTime() - start.getTime() // elapsed time in milliseconds
+
 </script>
 
 <style>
+   body {
+      text-align: center;
+      font-family: monospace;
+   }
    .clock {
       font-size: 15em;
       text-align: center;
-      width: 80%;
-      float: left;
+      width: 100%;
+      
    }
    .examtimes {
-      width: 20%;
+      width: 100%;
       text-align: center;
-      float: left;
       background-color: silver;
+   }
+
+   .bar {
+      width: 100%;
+      border-radius: 5px;
+      min-height: 3em;
+      background-color: black;
+   }
+   .barleft {
+      text-align: left;
+      min-width: 50%;
+      display: inline-block;
+   }
+   .barright {
+      text-align: right;
+      min-width: 50%;
+      display: inline;
    }
 </style>
 
@@ -52,24 +112,42 @@ function startExam() {
 <body onload="startTime()">
 
    <section class="examdetails">
-      <h3></h3>
+      <h3><script>
+         let d = new Date();
+         document.write(d.toString());
+      </script></h3>
       <h1>NCEA Digital Technology</h1>
       <h2>91899 - Present a Summary of Developing a Digital Outcome</h2>
    </section>
 
+   
+
    <div>
       <section id="clock" class="clock">
          
-      </section>
+      </section>   
 
-      <section class="examtimes">
+      <section id="examtimes" class="examtimes">
+
+         
+
+         <div id="elapsed" class="barleft">1</div>
+         <div id="remaining" class="barright">2</div>
+         <div class="bar">
+            <div id="elapsedBar" class="barcontent"></div>
+            <div id="remainingBar"class="barcontent"></div>
+         </div>
+
+         <!--
          <label for="appt">Start:</label>
-         <input type="time" id="start" name="start" min="09:00" max="18:00" required>
+         <input type="time" id="start" name="start" value="14:00" min="09:00" max="18:00" required>
          <br>
          <label for="appt">Length (Hours):</label>
-         <input type="number" id="length" name="length" min="0" max="6" required>
+         <input type="number" id="length" name="length" value="3" min="0" max="6" required>
          <button onclick="startExam()">Start</button>
+         -->
       </section>
+      
    </div>
 
 </body>
