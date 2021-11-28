@@ -3,13 +3,16 @@ html, body {
 
 }
 table {
-    border: 1px;
-    border-style: solid;
+    border-collapse: collapse;
+
     min-width: 100%;
 }
-
-tr:nth-child(even) {
-    background-color: silver;
+tr {
+    border-style: solid;
+    border-bottom: silver;
+    border-width: 1px;
+    
+    
 }
 
 th {
@@ -19,7 +22,7 @@ th {
 }
 
 .sortable {
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 .header {
@@ -42,4 +45,9 @@ input {
     height: 100%;
     text-align: center;
     font-size: 1.5em;
+}
+
+.center {
+    text-align: center;
+    font-weight: bold;
 }
