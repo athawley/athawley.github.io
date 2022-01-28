@@ -1,0 +1,44 @@
+html, body {
+   margin: 0px;
+   padding: 0px;
+   font-family: sans-serif;
+}
+
+.background-image {
+   background-color: red;
+   min-height: 100vh;
+}
+
+.background-image img {
+   display: block;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.date, .title, .content {
+   position: absolute;
+   background-color: white;
+   color: black;
+   padding: 5px;
+   box-sizing: border-box;
+}
+
+.date {
+   top: 0px;
+   left: 0px;
+   height: 5vh;
+   font-size: 4vh;
+}
+
+.title {
+   top: 10vh;
+   height: 10vh;
+   width: 100vh;
+}
+
+.content {
+   top: 25vh;
+   bottom:5vh;
+
+}

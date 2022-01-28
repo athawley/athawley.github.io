@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<script>
+   function writeTodaysDate() {
+      date = new Date().toLocaleDateString();
+      document.write(date);
+   }
+
+   function getFolderDate(date) {
+      year = date.getFullYear();
+      month = date.getMonth() + 1;
+      day = date.getDate();
+
+      folder = year + "-" + month + "-" + day;
+      return folder;
+   }
+
+</script>
+
+<html>
+<head>
+   <link href="styles.css" type="text/css" rel="stylesheet">
+   <title>
+      Today's Technofact
+   </title>
+</head>
+
+
+<body>
+
+   <div class="background-image">
+      <script>
+         folder = getFolderDate(new Date());
+         msg = "<img src='" + folder + "/background.jpg'>";
+         document.write(msg);
+      </script>
+      <!--
+         <img src="2022-01-29/background.jpg">
+      -->
+      <div class="date">
+         <script>writeTodaysDate();</script>
+      </div>
+      <div class="title">
+         <script>
+            folder = getFolderDate(new Date());
+            msg = "<embed src='" + folder + "/title.txt'>";
+            document.write(msg);
+         </script>
+      </div>
+      <div class="content">
+         <script>
+            folder = getFolderDate(new Date());
+            msg = "<embed src='" + folder + "/content.txt'>";
+            document.write(msg);
+         </script>
+         
+
+      </div>
+   </div>
+
+</body>
+
+</html>
